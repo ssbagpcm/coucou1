@@ -17,11 +17,12 @@
     
     <!-- Script pour envoyer les événements de touche au parent -->
     <script>
-      window.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-          window.parent.postMessage({ key: event.key }, '*');
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+            event.preventDefault();
+            window.parent.postMessage({ key: event.key }, '*');
         }
-      });
-    </script>
+    });
+  </script> 
   </body>
 </html>
